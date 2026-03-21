@@ -44,7 +44,10 @@ export default function DashboardHeader({role}: Props) {
                             <Link href="/dashboard/userManagement">
                                 <span className="text-gray-500 hover:text-green-700 cursor-pointer">USER MANAGEMENT</span>
                             </Link>
-                            <span className="text-gray-500 hover:text-green-700 cursor-pointer">ACTIVITY LOG</span>
+
+                            <Link href="/dashboard/logActivity">
+                                <span className="text-gray-500 hover:text-green-700 cursor-pointer">LOG ACTIVITY</span>
+                            </Link>
                         </>
                     }
                 </div>

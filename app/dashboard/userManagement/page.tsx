@@ -90,7 +90,7 @@ export default function UserManagementPage() {
                 type="active"
             />
 
-            <Link href="/userManagement/createUser">
+            <Link href="/dashboard/userManagement/createUser">
                 <Button label="Add New User" />
             </Link>
 

@@ -152,16 +152,18 @@ export default function DatasetReportTable() {
                                 </td>
 
                                 <td>
-                                    <button onClick={() => {
-                                        setShowEdit(true)
-                                        setEditFile(item)
-                                    }}>
-                                        Edit
-                                    </button>
-                                    |
-                                    <button>
-                                        Archive
-                                    </button>
+                                    <div className={styles.actionGroup}>
+                                        <button onClick={() => {
+                                            setShowEdit(true)
+                                            setEditFile(item)
+                                        }}
+                                        className={styles.buttonAction}>
+                                            Edit
+                                        </button>
+                                        <button className={styles.buttonAction}>
+                                            Archive
+                                        </button>
+                                    </div>
                                 </td>
                             </tr>
                         ))

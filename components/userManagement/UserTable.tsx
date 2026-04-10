@@ -161,7 +161,7 @@ export default function UserTable({ title, users, type }: Props) {
                 </tbody>
             </table>
 
-            {/* Deactivate Confirm */}
+            {/* Deactivate Confirm (Manual modal)*/}
             {showConfirm && (
                 <div className={styles.overlay}>
                     <div className={styles.confirmBox}>

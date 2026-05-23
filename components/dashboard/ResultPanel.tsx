@@ -108,7 +108,7 @@ export default function ResultPanel({
 
                 let y = 80
 
-                representativeResult.forEach((item: any) => {
+                overallResult.forEach((item: any) => {
 
                     pdf.rect(40, y, 120, 30)
                     pdf.rect(160, y, 140, 30)
@@ -118,7 +118,7 @@ export default function ResultPanel({
                     pdf.text(item.time_point, 50, y + 20)
 
                     pdf.text(
-                        String(item.actual_dissolution_pct),
+                        String(item.predicted_sd),
                         170,
                         y + 20
                     )
@@ -278,11 +278,12 @@ export default function ResultPanel({
         RESULT STATE
     */
 
-    const representativeResult =
-    predictionResult.representativeResult || []
+    // Change eto overalLResults
+    const overallResult =
+    predictionResult.overallResult || []
 
     const graphUrl =
-        `${process.env.NEXT_PUBLIC_FLASK_API}${predictionResult.representativePlot}`
+        `${process.env.NEXT_PUBLIC_FLASK_API}${predictionResult.overallPlot}`
 
     return (
 
@@ -321,6 +322,10 @@ export default function ResultPanel({
                             </th>
 
                             <th className="border p-2">
+                                SD
+                            </th>
+
+                            <th className="border p-2">
                                 Status
                             </th>
 
@@ -328,9 +333,7 @@ export default function ResultPanel({
 
                     </thead>
 
-                    <tbody>
-
-                        {representativeResult.map((item: any, index: number) => (
+                    <tbody>{overallResult.map((item: any, index: number) => (
 
                             <tr key={index}>
 
@@ -340,6 +343,10 @@ export default function ResultPanel({
 
                                 <td className="border p-2 text-center">
                                     {item.predicted_dissolution_pct}
+                                </td>
+
+                                <td className="border p-2 text-center">
+                                    {item.predicted_sd}
                                 </td>
 
                                 <td className="border p-2 text-center">

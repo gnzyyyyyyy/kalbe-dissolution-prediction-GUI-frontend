@@ -12,11 +12,11 @@ export default function ReportTemplate({
 
     if (!predictionResult) return null
 
-    const representativeResult =
-        predictionResult.representativeResult || []
+    const overallResult =
+        predictionResult.overallResult || []
 
     const graphUrl =
-        `${process.env.NEXT_PUBLIC_FLASK_API}${predictionResult.representativePlot}`
+        `${process.env.NEXT_PUBLIC_FLASK_API}${predictionResult.overallPlot}`
 
     const cellStyle = {
         border: "1px solid #000",
@@ -194,6 +194,18 @@ export default function ReportTemplate({
                                         % Dissolution
                                     </div>
                                 </th>
+                                <th style={cellStyle}>
+                                    <div
+                                        style={{
+                                            backgroundColor: "#d9d9d9",
+                                            margin: "-10px",
+                                            padding: "10px",
+                                            fontWeight: "bold"
+                                        }}
+                                    >
+                                        SD
+                                    </div>
+                                </th>
 
                                 <th style={cellStyle}>
                                     <div
@@ -214,7 +226,7 @@ export default function ReportTemplate({
 
                         <tbody>
 
-                            {representativeResult.map((item: any, index: number) => (
+                            {overallResult.map((item: any, index: number) => (
 
                                 <tr key={index}>
 
@@ -224,6 +236,10 @@ export default function ReportTemplate({
 
                                     <td style={cellStyle}>
                                         {item.predicted_dissolution_pct}
+                                    </td>
+
+                                    <td style={cellStyle}>
+                                        {item.predicted_sd}
                                     </td>
 
                                     <td style={cellStyle}>

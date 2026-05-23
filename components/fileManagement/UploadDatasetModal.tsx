@@ -24,19 +24,6 @@ export default function UploadDatasetModal({ onClose, onSuccess }: Props) {
             return;
         }
 
-        const allowedExtensions = [".xls", ".xlsx"];
-
-        const fileExtensions = file.name
-            .substring(file.name.lastIndexOf("."))
-            .toLowerCase();
-        
-        if (!allowedExtensions.includes(fileExtensions)) {
-            setPopup({
-                show: true,
-                message: "Only .xls, .xlsx file allowed"
-            });
-            return;
-        }
         try {
             const token = localStorage.getItem("token");
 

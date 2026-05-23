@@ -23,23 +23,6 @@ export default function UploadBox({file, setFile, setDatasetId}: Props) {
         totalBatch: number
     } | null>(null)
 
-    const allowedExtensions = [".xls", ".xlsx"]
-
-    const validateFile = (selectedFile: File) => {
-        const extension = selectedFile.name
-            .substring(selectedFile.name.lastIndexOf("."))
-            .toLowerCase();
-        
-        if (!allowedExtensions.includes(extension)) {
-            setPopup({
-                show: true,
-                message: "Only .xls, .xlsx file allowed"
-            });
-            return false;
-        }
-        return true;
-    }
-
     const uploadDataset = async (selectedFile: File) => {
         try {
             const token = localStorage.getItem("token");
@@ -93,7 +76,7 @@ export default function UploadBox({file, setFile, setDatasetId}: Props) {
         const selectedFile = e.target.files?.[0];
         if (!selectedFile) return;
 
-        if (!validateFile(selectedFile)) return;
+        
         setFile(selectedFile);
 
         uploadDataset(selectedFile);
@@ -109,7 +92,7 @@ export default function UploadBox({file, setFile, setDatasetId}: Props) {
     const droppedFile = e.dataTransfer.files?.[0];
         if (!droppedFile) return;
 
-        if (!validateFile(droppedFile)) return;
+        
         setFile(droppedFile);
 
         uploadDataset(droppedFile);
